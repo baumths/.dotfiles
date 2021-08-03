@@ -1,0 +1,7 @@
+[init]
+	defaultBranch = main
+[alias]
+	c = commit -m
+	ac = commit -am
+	l = log --oneline
+	pf = push --force-with-lease

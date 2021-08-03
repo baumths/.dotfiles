@@ -1,0 +1,26 @@
+# Ordered && Formated ls
+alias ols="ls -1Ahpv --group-directories-first"
+
+# Update
+alias ++="sudo apt-get update && sudo apt-get upgrade -y && sudo apt autoremove -y"
+
+# Python serve in current folder
+alias pserve="python3 -m http.server 8000"
+
+# Format json
+alias pjson="python3 -m json.tool"
+
+# Access To Memory -------------------------------------------------------------
+
+export ATOM_DIR="$HOME/dev/github/atom"
+export ATOM_COMPOSE_FILE="$ATOM_DIR/docker/docker-compose.dev.yml"
+
+alias atom="docker-compose -f $ATOM_COMPOSE_FILE"
+alias atom-ex="atom exec atom"
+alias atom-cc="atom-ex php symfony cc"
+alias atom-sp="atom-ex php symfony search:populate"
+
+# FLUTTER ----------------------------------------------------------------------
+
+alias fbuild="flutter pub run build_runner build --delete-conflicting-outputs"
+alias fwatch="flutter pub run build_runner watch --delete-conflicting-outputs"

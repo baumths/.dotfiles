@@ -14,6 +14,7 @@ install_apt_pkgs() {
     wget \
     software-properties-common \
     apt-transport-https \
+    gnome-session \
     gnome-tweaks \
     gnome-shell-extensions \
     fonts-firacode

@@ -1,4 +1,0 @@
-export EDITOR="vi"
-export VISUAL="vi"
-export PATH="$PATH:$HOME/.pub-cache/bin" # Dart activated global packages
-export PATH="$PATH:$HOME/flutter/bin"

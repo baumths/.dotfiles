@@ -5,6 +5,7 @@
 	ac = commit -am
 	l = log --oneline
 	pf = push --force-with-lease
+  s = status -s
 [user]
 	name = mbaumgartenbr
 	signingkey = 0757EEB1E9FE1FB6

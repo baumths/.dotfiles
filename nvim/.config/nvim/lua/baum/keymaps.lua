@@ -60,7 +60,7 @@ nmap(
   "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<CR>"
 )
 nmap(
-  "<leader>H<CR>",
+  "<leader><leader><CR>",
   "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false, hidden = true }))<CR>"
 )
 nmap(

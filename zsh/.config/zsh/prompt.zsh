@@ -23,10 +23,12 @@ zstyle ':vcs_info:git*+set-message:*' hooks git-untracked
     #[[ -n $(git ls-files --others --exclude-standard) ]] ; then
     hook_com[staged]+='!' # signify new files with a bang
   fi
+
+  [[ -n $(git status -s) ]] && hook_com[staged]+=" "
 }
 
 zstyle ':vcs_info:*' check-for-changes true
-zstyle ':vcs_info:git:*' formats " %{$fg[blue]%}(%F{9}%m%u%c%f%{$fg[white]%} %{$fg[green]%} %b%{$fg[blue]%})"
+zstyle ':vcs_info:git:*' formats " %{$fg[blue]%}(%F{9}%m%u%c%f%{$fg[white]%}%{$fg[green]%} %b%{$fg[blue]%})"
 
 PROMPT="%B%F{4}[%f%b"
 PROMPT+="%B%F{15}%n%f%b"     # user

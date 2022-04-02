@@ -15,3 +15,15 @@
   ```bash
   bash .dotfiles/scipts/install.sh
   ```
+
+###  Install JetBrains fonts
+
+```sh
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/install_manual.sh)"
+```
+
+### Choose default terminal
+
+```sh
+sudo update-alternatives --config x-terminal-emulator
+```

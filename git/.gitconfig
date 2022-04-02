@@ -5,3 +5,8 @@
 	ac = commit -am
 	l = log --oneline
 	pf = push --force-with-lease
+[user]
+	name = mbaumgartenbr
+	signingkey = 0757EEB1E9FE1FB6
+[commit]
+	gpgsign = true

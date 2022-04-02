@@ -10,14 +10,28 @@ exists() {
 
 install_apt_pkgs() {
   apt install -yy \
+    zsh \
+    fzf \
     stow \
     wget \
+    kitty \
     software-properties-common \
     apt-transport-https \
     gnome-session \
     gnome-tweaks \
     gnome-shell-extensions \
-    fonts-firacode
+}
+
+install_nvim() {
+  add-apt-repository ppa:neovim-ppa/unstable
+  apt update
+  apt install -yy neovim
+}
+
+install_lazygit() {
+  add-apt-repository ppa:lazygit-team/release
+  apt update
+  apt install -yy lazygit
 }
 
 install_docker() {
@@ -31,22 +45,9 @@ install_docker() {
   apt remove -yy python3-pip
 }
 
-install_chrome() {
-  wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - 
-  sh -c 'echo "deb https://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
-  apt update
-  apt install -yy google-chrome-stable
-}
-
-install_code() {
-  wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add -
-  add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"
-  apt install -yy code
-}
-
-## Revize this later, changed from snap to manual installation
+## Revise this later, changed from snap to manual installation
 install_flutter() {
-  git clone https://github.com/flutter/flutter.git -b stable "$HOME/flutter"
+  git clone https://github.com/flutter/flutter.git -b stable "$HOME/.local/share/flutter"
 
   apt install -yy \
     clang \
@@ -57,11 +58,24 @@ install_flutter() {
 
   if ! exists flutter; then
     echo "Flutter not found. Did you add it to PATH?"
-    export PATH="$PATH:$HOME/flutter/bin"
+    export PATH="$PATH:$HOME/.local/share/flutter/bin"
   fi;
 
   flutter doctor
-  flutter config --enable-linux-desktop
+}
+
+install_chrome() {
+  wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - 
+  sh -c 'echo "deb https://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
+  apt update
+  apt install -yy google-chrome-stable
+}
+
+install_spotify() {
+  curl -sS https://download.spotify.com/debian/pubkey_5E3C45D7B312C643.gpg | sudo apt-key add - 
+  echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
+  apt update
+  apt install -yy spotify-client
 }
 
 # Theme
@@ -95,7 +109,7 @@ install_icons() {
   gsettings set org.gnome.desktop.interface icon-theme "$1"
 }
 
-install_theme() {
+install_themes() {
   install_wallpaper "nordic.jpg"
   
   install_icons "Flat-Remix-Blue-Dark"
@@ -111,8 +125,12 @@ setup_symlinks() {
 
     echo "=====> Creating symlinks."
     
-    stow -v bash/
     stow -v git/
+    stow -v zsh/
+    stow -v nvim/
+    stow -v kitty/
+    stow -v lazygit/
+
     stow -v theme/ --ignore="wallpapers"
 
     echo "=====> Done creating symlinks."
@@ -136,11 +154,15 @@ main () {
   
   setup_symlinks
   
-  install_chrome
-  install_code
+  install_nvim
+  install_lazygit
   install_docker
   install_flutter
-  install_theme
+  install_chrome
+  install_spotify
+  install_themes
+
+  echo "======================> REMEMBER TO ADD REMAINING CONFIGS ======================"
 }
 
 main $@

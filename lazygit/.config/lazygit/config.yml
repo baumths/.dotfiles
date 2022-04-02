@@ -1,0 +1,6 @@
+gui:
+  showFileTree: true
+git:
+  overrideGpg: true
+  commit:
+    signOff: true

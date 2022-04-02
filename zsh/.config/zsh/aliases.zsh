@@ -2,6 +2,7 @@ alias v="nvim"
 alias nvimrc="nvim ~/.config/nvim/"
 
 alias g="lazygit"
+alias e="exit"
 
 alias zsh-update-plugins="find "$ZDOTDIR/plugins" -type d -exec test -e '{}/.git' ';' -print0 | xargs -I {} -0 git -C {} pull -q"
 

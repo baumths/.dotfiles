@@ -2,6 +2,13 @@
 
 # Helpers
 
+check_has_sudo() {
+  if [ "$EUID" -ne 0 ]; then
+    echo "Please run as root."
+    exit
+  fi
+}
+
 exists() {
   command -v "$1" >/dev/null 2>&1
 }
@@ -19,17 +26,17 @@ install_apt_pkgs() {
     apt-transport-https \
     gnome-session \
     gnome-tweaks \
-    gnome-shell-extensions \
+    gnome-shell-extensions
 }
 
 install_nvim() {
-  add-apt-repository ppa:neovim-ppa/unstable
+  add-apt-repository ppa:neovim-ppa/unstable -yy
   apt update
   apt install -yy neovim
 }
 
 install_lazygit() {
-  add-apt-repository ppa:lazygit-team/release
+  add-apt-repository ppa:lazygit-team/release -yy
   apt update
   apt install -yy lazygit
 }
@@ -139,13 +146,6 @@ setup_symlinks() {
   )
 }
 
-check_has_sudo() {
-  if [ "$EUID" -ne 0 ]; then
-    echo "Please run as root."
-    exit
-  fi;
-}
-
 # Entrypoint
 main () {
   check_has_sudo
@@ -165,4 +165,4 @@ main () {
   echo "======================> REMEMBER TO ADD REMAINING CONFIGS ======================"
 }
 
-main $@
+main "$@"

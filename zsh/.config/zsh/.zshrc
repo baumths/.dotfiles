@@ -50,3 +50,5 @@ zsh_add_plugin "zsh-users/zsh-syntax-highlighting"
 compinit
 
 autoload edit-command-line; zle -N edit-command-line
+
+bindkey '^[[Z' autosuggest-accept # <shift-tab> completes from history

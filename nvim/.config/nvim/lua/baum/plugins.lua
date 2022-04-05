@@ -48,12 +48,10 @@ local function setup_plugins(use)
   use "kyazdani42/nvim-web-devicons" -- Icons
   use "kyazdani42/nvim-tree.lua" -- File Tree
   use "nvim-lualine/lualine.nvim" -- Better status line
-  use "akinsho/toggleterm.nvim" -- Embedded Terminal
   use "lewis6991/impatient.nvim" -- Improve startup performance
   use "lukas-reineke/indent-blankline.nvim" -- Indentation line guides
 
   -- Colorschemes
-  use "christianchiarulli/nvcode-color-schemes.vim" -- treesitter based colorschemes
   use {
     "catppuccin/nvim",
     as = "catppuccin",
@@ -84,8 +82,6 @@ local function setup_plugins(use)
     "nvim-treesitter/nvim-treesitter",
     run = ":TSUpdate",
   }
-  use "nvim-treesitter/playground"
-  use "JoosepAlviste/nvim-ts-context-commentstring"
 
   -- Git
   use "lewis6991/gitsigns.nvim" -- Show git hunks status to the left of the numbers column

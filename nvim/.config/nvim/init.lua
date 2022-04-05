@@ -16,7 +16,6 @@ local user_modules = {
   "other",
   "plugins",
   "telescope",
-  "toggleterm",
   "treesitter",
 }
 

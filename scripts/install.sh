@@ -5,7 +5,7 @@
 check_has_sudo() {
   if [ "$EUID" -ne 0 ]; then
     echo "Please run as root."
-    exit
+    exit 1
   fi
 }
 
@@ -21,6 +21,7 @@ install_apt_pkgs() {
     fzf \
     stow \
     wget \
+    tree \
     kitty \
     software-properties-common \
     apt-transport-https \
@@ -85,84 +86,73 @@ install_spotify() {
   apt install -yy spotify-client
 }
 
-# Theme
+# Looks
 
-install_shell_theme() {
-  if [ -z "$1" ]; then
-    echo "The shell theme was not specified. Skiping..."
-    return;
-  fi;
+set_theme() {
+  gsettings set org.gnome.shell.extensions.user-theme name ""
+  gsettings set org.gnome.desktop.interface gtk-theme "Adwaita-dark"
+  gsettings set org.gnome.desktop.wm.preferences theme "Adwaita"
+  gsettings set org.gnome.desktop.interface icon-theme "Adwaita"
 
-  gsettings set org.gnome.shell.extensions.user-theme name "$1"
-  gsettings set org.gnome.desktop.interface gtk-theme "$1"
-  gsettings set org.gnome.desktop.wm.preferences theme "$1"
-}
-
-install_wallpaper() {
-  if [ -z "$1" ]; then
-    echo "The wallpaper was not specified. Skiping..."
-    return;
-  fi;
-
-  gsettings set org.gnome.desktop.background picture-uri "file:///$HOME/.dotfiles/theme/wallpapers/$1"
-}
-
-install_icons() {
-  if [ -z "$1" ]; then
-    echo "The icon theme was not specified. Skiping..."
-    return;
-  fi;
-  
-  gsettings set org.gnome.desktop.interface icon-theme "$1"
-}
-
-install_themes() {
-  install_wallpaper "nordic.jpg"
-  
-  install_icons "Flat-Remix-Blue-Dark"
-
-  install_shell_theme "Nordic-darker-v40"
+  # Wallpapers
+  local WALLPAPERS_SCRIPT="$HOME/.dotfiles/scripts/wallpapers.sh"
+  if [[ -f $WALLPAPERS_SCRIPT]]; then
+    echo "=====> Installing Wallpapers..."
+    chmod +x $WALLPAPERS_SCRIPT
+    bash $WALLPAPERS_SCRIPT
+  else
+    echo "[!] Failed to setup wallpapers."
+  fi
 }
 
 # Setup
 
 setup_symlinks() {
-  (
-    pushd "$HOME/.dotfiles"
+  pushd "$HOME/.dotfiles"
 
-    echo "=====> Creating symlinks."
-    
-    stow -v git/
-    stow -v zsh/
-    stow -v nvim/
-    stow -v kitty/
-    stow -v lazygit/
+  stow -v git/
+  stow -v zsh/
+  stow -v nvim/
+  stow -v kitty/
+  stow -v lazygit/
 
-    stow -v theme/ --ignore="wallpapers"
-
-    echo "=====> Done creating symlinks."
-
-    popd
-  )
+  popd
 }
 
 # Entrypoint
 main () {
   check_has_sudo
 
+  echo "=====> Installing apt packages..."
   install_apt_pkgs
   
+  echo "=====> Creating symlinks..."
   setup_symlinks
   
+  echo "=====> Installing Neovim..."
   install_nvim
-  install_lazygit
-  install_docker
-  install_flutter
-  install_chrome
-  install_spotify
-  install_themes
 
-  echo "======================> REMEMBER TO ADD REMAINING CONFIGS ======================"
+  echo "=====> Installing Lazygit..."
+  install_lazygit
+
+  echo "=====> Installing Docker..."
+  install_docker
+
+  echo "=====> Installing Flutter..."
+  install_flutter
+
+  echo "=====> Installing Chrome..."
+  install_chrome
+
+  echo "=====> Installing Spotify..."
+  install_spotify
+
+  echo "=====> Updating Gnome Themes..."
+  set_theme
+
+  echo "=====> Post install reminder:"
+  echo "=====> -- GIT GPG KEY --"
+  echo "=====> -- GITHUB SSH  --"
 }
 
 main "$@"

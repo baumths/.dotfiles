@@ -1,6 +1,4 @@
-# My ubuntu dotfiles setup + scripts
-
-> On a new Ubuntu Machine
+# Personal Ubuntu Dotfiles (setup + scripts)
 
 - Update packages
   ```bash
@@ -13,7 +11,7 @@
   ```
 - Run install script
   ```bash
-  bash .dotfiles/scipts/install.sh
+  bash ~/.dotfiles/scipts/install.sh
   ```
 
 ###  Install JetBrains fonts

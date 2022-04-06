@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# TODO: [ ] Install `lua` and its language server
+
 # Helpers
 
 check_has_sudo() {

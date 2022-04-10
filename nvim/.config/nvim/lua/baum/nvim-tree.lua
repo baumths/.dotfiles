@@ -28,6 +28,28 @@ local nvim_tree = require("nvim-tree")
 -- local nvim_tree_config = require("nvim-tree.config")
 -- local tree_cb = nvim_tree_config.nvim_tree_callback
 
+local function expand_all()
+    local nvimlib = require('nvim-tree.lib')
+    local function iter(nodes)
+        for _, node in pairs(nodes) do
+            if not node.open and node.nodes then
+                nvimlib.expand_or_collapse(node)
+            end
+            if node.nodes then
+                iter(node.nodes)
+            end
+        end
+    end
+
+    local nodes = {}
+    local currnode = nvimlib.get_node_at_cursor()
+    if currnode == nil then
+        return
+    end
+    nodes = {currnode}
+    iter(nodes)
+end
+
 nvim_tree.setup {
   disable_netrw = true,
   hijack_netrw = true,
@@ -73,6 +95,7 @@ nvim_tree.setup {
     mappings = {
       custom_only = false,
       list = {
+        { key = "O", action = "expand_all", action_cb = expand_all }
         -- { key = { "l", "<CR>", "o" }, cb = tree_cb "edit" },
         -- { key = "h", cb = tree_cb "close_node" },
         -- { key = "v", cb = tree_cb "vsplit" },

@@ -54,9 +54,9 @@ nmap("<C-Left>", ":vertical resize +5<CR>")
 nmap("<C-Right>", ":vertical resize -5<CR>")
 
 -- Telescope
-nmap("<leader>e", ":Telescope find_files<CR>")
-
--- No previewer
+nmap("<leader>e", "<cmd>Telescope find_files<CR>")
+nmap("<leader>b", "<cmd>Telescope buffers<CR>")
+nmap("<leader>.", "<cmd>Telescope lsp_code_actions<CR>")
 nmap(
   "<leader><CR>",
   "<cmd>lua require'baum.telescope.finders'.find_files()<CR>"
@@ -65,14 +65,6 @@ nmap(
   "<leader><leader><CR>",
   "<cmd>lua require'baum.telescope.finders'.find_all_files()<CR>"
 ) -- Find files dropdown including hidden files
-nmap(
-  "<leader>b",
-  "<cmd>lua require'baum.telescope.finders'.buffers()<CR><ESC>"
-) -- Show buffers dropdown in normal mode
-nmap(
-  "<leader>.",
-  "<cmd>lua require'baum.telescope.finders'.code_actions()<CR><ESC>"
-) -- Show code actions dropdown in normal mode
 
 -- Nvimtree
 nmap("<leader>t", ":NvimTreeToggle<CR>")

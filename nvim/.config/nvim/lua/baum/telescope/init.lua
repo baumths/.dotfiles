@@ -77,13 +77,29 @@ telescope.setup {
     },
   },
   pickers = {
-    -- Default configuration for builtin pickers goes here:
-    -- picker_name = {
-    --   picker_config_key = value,
-    --   ...
-    -- }
-    -- Now the picker_config_key will be applied every time you call this
-    -- builtin picker
+    find_files = {
+      previewer = false,
+    },
+    lsp_code_actions = {
+      initial_mode = "normal",
+      theme = "dropdown",
+      previewer = false,
+      layout_config = {
+        height = 0.7,
+      }
+    },
+    buffers = {
+      initial_mode = "normal",
+      show_all_buffers = true,
+      sort_lastused = true,
+      theme = "dropdown",
+      previewer = false,
+      mappings = {
+        n = {
+          ["<leader>d"] = "delete_buffer",
+        }
+      }
+    }
   },
   extensions = {
     media_files = {

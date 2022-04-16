@@ -21,12 +21,7 @@ vim.g.nvim_tree_icons = {
   },
 }
 
-vim.g.nvim_tree_indent_markers = 1 -- lines
-
 local nvim_tree = require("nvim-tree")
-
--- local nvim_tree_config = require("nvim-tree.config")
--- local tree_cb = nvim_tree_config.nvim_tree_callback
 
 local function expand_all()
     local nvimlib = require('nvim-tree.lib')
@@ -85,6 +80,11 @@ nvim_tree.setup {
     enable = true,
     ignore = true,
     timeout = 500,
+  },
+  renderer = {
+    indent_markers = {
+      enable = true,
+    },
   },
   view = {
     width = 30,

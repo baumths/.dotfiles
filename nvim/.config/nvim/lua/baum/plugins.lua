@@ -82,6 +82,7 @@ local function setup_plugins(use)
     "nvim-treesitter/nvim-treesitter",
     run = ":TSUpdate",
   }
+  use 'JoosepAlviste/nvim-ts-context-commentstring'
 
   -- Git
   use "lewis6991/gitsigns.nvim" -- Show git hunks status to the left of the numbers column

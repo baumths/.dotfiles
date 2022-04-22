@@ -4,6 +4,10 @@
   ```bash
   sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y
   ```
+- Install Git
+  ```bash
+  sudo apt install git -y
+  ```
 - Clone this repo
   ```bash
   cd ~
@@ -11,17 +15,18 @@
   ```
 - Run install script
   ```bash
+  chmod +x ~/.dotfiles/scipts/install.sh
   bash ~/.dotfiles/scipts/install.sh
   ```
 
-###  Install JetBrains fonts
+###  Install JetBrains Nerd Font
 
-```sh
+```bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/install_manual.sh)"
 ```
 
 ### Choose default terminal
 
-```sh
+```bash
 sudo update-alternatives --config x-terminal-emulator
 ```

@@ -82,11 +82,36 @@ install_spotify() {
 
 # Looks
 
-set_theme() {
+setup_shell() {
+  # Shell Theme
   gsettings set org.gnome.shell.extensions.user-theme name ""
   gsettings set org.gnome.desktop.interface gtk-theme "Adwaita-dark"
   gsettings set org.gnome.desktop.wm.preferences theme "Adwaita"
   gsettings set org.gnome.desktop.interface icon-theme "Adwaita"
+  gsettings set org.gnome.desktop.interface cursor-theme "Adwaita"
+
+  gsettings set org.gnome.desktop.interface show-battery-percentage "true"
+
+  # Input Sources
+  gsettings set org.gnome.desktop.input-sources mru-sources "[('xkb', 'us'), ('xkb', 'br')]"
+  gsettings set org.gnome.desktop.input-sources sources "[('xkb', 'br'), ('xkb', 'us')]"
+  gsettings set org.gnome.desktop.input-sources xkb-options "['caps:swapescape', 'compose:ralt']"
+
+  # Keyboard
+  gsettings set org.gnome.desktop.peripherals.keyboard delay "uint32 254"
+  gsettings set org.gnome.desktop.peripherals.keyboard repeat-interval "uint32 23"
+
+  # Keybingings
+  gsettings set org.gnome.desktop.wm.keybindings close "['<Alt>q']"
+  gsettings set org.gnome.desktop.wm.keybindings panel-main-menu "['<Alt>F1']"
+  gsettings set org.gnome.desktop.wm.keybindings toggle-fullscreen "['<Alt>f']"
+  gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-1 "['<Alt>1']"
+  gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-2 "['<Alt>2']"
+  gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-3 "['<Alt>3']"
+  gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-4 "['<Alt>4']"
+
+  # ALT + RETURN = TERMINAL
+  gsettings set org.gnome.settings-daemon.plugins.media-keys terminal "['<Alt>Return']"
 
   # Wallpapers
   local WALLPAPERS_SCRIPT="$HOME/.dotfiles/scripts/wallpapers.sh"
@@ -140,7 +165,7 @@ main () {
   install_spotify
 
   echo -e "\n=====> Updating Gnome Themes..."
-  set_theme
+  setup_shell
 
   echo -e "\n=====> Setting things up..."
   chsh -s $(which zsh) # set zsh as default shell

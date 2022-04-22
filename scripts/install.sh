@@ -4,15 +4,6 @@
 
 # Helpers
 
-HOME="/home/baum"
-
-check_has_sudo() {
-  if [ "$EUID" -ne 0 ]; then
-    echo "Please run as root."
-    exit 1
-  fi
-}
-
 exists() {
   command -v "$1" >/dev/null 2>&1
 }
@@ -20,7 +11,7 @@ exists() {
 # CLI tools & packages
 
 install_apt_pkgs() {
-  apt install -yy \
+  sudo apt install -yy \
     zsh \
     fzf \
     stow \
@@ -31,47 +22,44 @@ install_apt_pkgs() {
     lua5.4 \
     software-properties-common \
     apt-transport-https \
-    gnome-session \
     gnome-tweaks \
-    gnome-shell-extensions
-}
-
-install_nvim() {
-  add-apt-repository ppa:neovim-ppa/unstable -yy
-  apt update
-  apt install -yy neovim
-}
-
-install_lazygit() {
-  add-apt-repository ppa:lazygit-team/release -yy
-  apt update
-  apt install -yy lazygit
-}
-
-install_docker() {
-  curl -fsSL https://get.docker.com | bash
-  groupadd docker
-  usermod -aG docker "$USER"
-
-  # easiest way to get `docker-compose`
-  apt install -yy python3-pip
-  python3 -m pip install docker-compose
-  apt remove -yy python3-pip
-}
-
-## Revise this later, changed from snap to manual installation
-install_flutter() {
-  git clone https://github.com/flutter/flutter.git -b stable "$HOME/.local/share/flutter"
-
-  apt install -yy \
+    gnome-shell-extensions \
     clang \
     cmake \
     ninja-build \
     pkg-config \
     libgtk-3-dev
+}
+
+install_nvim() {
+  sudo add-apt-repository ppa:neovim-ppa/unstable -yy
+  sudo apt update
+  sudo apt install -yy neovim
+}
+
+install_lazygit() {
+  sudo add-apt-repository ppa:lazygit-team/release -yy
+  sudo apt update
+  sudo apt install -yy lazygit
+}
+
+install_docker() {
+  curl -fsSL https://get.docker.com | bash
+  sudo groupadd docker
+  sudo usermod -aG docker "$USER"
+
+  # easiest way to get `docker-compose`
+  sudo apt install -yy python3-pip
+  python3 -m pip install docker-compose
+  sudo apt remove -yy python3-pip
+}
+
+## Revise this later, changed from snap to manual installation
+install_flutter() {
+  git clone -b stable --depth 1 https://github.com/flutter/flutter.git "$HOME/.local/share/flutter"
 
   if ! exists flutter; then
-    echo "Flutter not found. Did you add it to PATH?"
+    echo -e "\n=====> Flutter not found. Did you add it to PATH?"
     export PATH="$PATH:$HOME/.local/share/flutter/bin"
   fi;
 
@@ -81,15 +69,15 @@ install_flutter() {
 install_chrome() {
   wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - 
   sh -c 'echo "deb https://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
-  apt update
-  apt install -yy google-chrome-stable
+  sudo apt update
+  sudo apt install -yy google-chrome-stable
 }
 
 install_spotify() {
   curl -sS https://download.spotify.com/debian/pubkey_5E3C45D7B312C643.gpg | sudo apt-key add - 
   echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
-  apt update
-  apt install -yy spotify-client
+  sudo apt update
+  sudo apt install -yy spotify-client
 }
 
 # Looks
@@ -103,11 +91,11 @@ set_theme() {
   # Wallpapers
   local WALLPAPERS_SCRIPT="$HOME/.dotfiles/scripts/wallpapers.sh"
   if [[ -f $WALLPAPERS_SCRIPT ]]; then
-    echo "=====> Installing Wallpapers..."
+    echo -e "\n=====> Installing Wallpapers..."
     chmod +x $WALLPAPERS_SCRIPT
     bash $WALLPAPERS_SCRIPT
   else
-    echo "[!] Failed to setup wallpapers."
+    echo -e "\n[!] Failed to setup wallpapers."
   fi
 }
 
@@ -127,38 +115,41 @@ setup_symlinks() {
 
 # Entrypoint
 main () {
-  check_has_sudo
-
-  echo "=====> Installing apt packages..."
+  echo -e "\n=====> Installing apt packages..."
   install_apt_pkgs
   
-  echo "=====> Creating symlinks..."
+  echo -e "\n=====> Creating symlinks..."
   setup_symlinks
   
-  echo "=====> Installing Neovim..."
+  echo -e "\n=====> Installing Neovim..."
   install_nvim
 
-  echo "=====> Installing Lazygit..."
+  echo -e "\n=====> Installing Lazygit..."
   install_lazygit
 
-  echo "=====> Installing Docker..."
+  echo -e "\n=====> Installing Docker..."
   install_docker
 
-  echo "=====> Installing Flutter..."
+  echo -e "\n=====> Installing Flutter..."
   install_flutter
 
-  echo "=====> Installing Chrome..."
+  echo -e "\n=====> Installing Chrome..."
   install_chrome
 
-  echo "=====> Installing Spotify..."
+  echo -e "\n=====> Installing Spotify..."
   install_spotify
 
-  echo "=====> Updating Gnome Themes..."
+  echo -e "\n=====> Updating Gnome Themes..."
   set_theme
 
-  echo "=====> Post install reminder:"
-  echo "=====> -- GIT GPG KEY --"
-  echo "=====> -- GITHUB SSH  --"
+  echo -e "\n=====> Setting things up..."
+  chsh -s $(which zsh) # set zsh as default shell
+
+  echo -e "\n=====> Post install reminder:"
+  echo -e "\n=====> -- GIT GPG KEY --"
+  echo -e "\n=====> -- GITHUB SSH  --"
+
+  echo -e "\n[*] Remember to restart your computer once done."
 }
 
 main "$@"

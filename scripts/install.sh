@@ -98,7 +98,7 @@ set_theme() {
 
   # Wallpapers
   local WALLPAPERS_SCRIPT="$HOME/.dotfiles/scripts/wallpapers.sh"
-  if [[ -f $WALLPAPERS_SCRIPT]]; then
+  if [[ -f $WALLPAPERS_SCRIPT ]]; then
     echo "=====> Installing Wallpapers..."
     chmod +x $WALLPAPERS_SCRIPT
     bash $WALLPAPERS_SCRIPT

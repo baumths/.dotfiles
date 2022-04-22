@@ -4,6 +4,8 @@
 
 # Helpers
 
+HOME="/home/baum"
+
 check_has_sudo() {
   if [ "$EUID" -ne 0 ]; then
     echo "Please run as root."
@@ -25,6 +27,7 @@ install_apt_pkgs() {
     wget \
     tree \
     kitty \
+    lua5.4 \
     software-properties-common \
     apt-transport-https \
     gnome-session \

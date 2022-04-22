@@ -25,6 +25,7 @@ install_apt_pkgs() {
     fzf \
     stow \
     wget \
+    curl \
     tree \
     kitty \
     lua5.4 \

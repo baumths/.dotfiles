@@ -1,7 +1,5 @@
 #!/bin/bash
 
-# CLI tools & packages
-
 install_apt_pkgs() {
   sudo apt install -yy \
     zsh \
@@ -23,7 +21,7 @@ install_apt_pkgs() {
     libgtk-3-dev
 }
 
-install_nvim() {
+install_neovim() {
   sudo add-apt-repository ppa:neovim-ppa/unstable -yy
   sudo apt update
   sudo apt install -yy neovim
@@ -63,6 +61,11 @@ install_chrome() {
 }
 
 install_spotify() {
+  # Not able to install spotify on ubuntu 22.04 without following package:
+  # wget http://security.ubuntu.com/ubuntu/pool/main/o/openssl/libssl1.1_1.1.1l-1ubuntu1.2_amd64.deb
+  # sudo dpkg -i libssl1.1_1.1.1l-1ubuntu1.2_amd64.deb
+  # rm -f libssl1.1_1.1.1l-1ubuntu1.2_amd64.deb
+
   wget -O - https://download.spotify.com/debian/pubkey_5E3C45D7B312C643.gpg \
   | gpg --dearmor \
   | sudo tee /usr/share/keyrings/spotify.gpg
@@ -75,8 +78,6 @@ install_spotify() {
 }
 
 setup_shell() {
-  gsettings set org.gnome.desktop.interface show-battery-percentage "true"
-
   # ALT + RETURN = TERMINAL
   gsettings set org.gnome.settings-daemon.plugins.media-keys terminal "['<Alt>Return']"
 
@@ -128,7 +129,7 @@ main () {
   setup_symlinks
   
   echo -e "\n=====> Installing Neovim..."
-  install_nvim
+  install_neovim
 
   echo -e "\n=====> Installing Lazygit..."
   install_lazygit
@@ -149,11 +150,8 @@ main () {
   setup_shell
 
   echo -e "\n=====> Setting things up..."
-  chsh -s $(which zsh) # set zsh as default shell
-
-  echo -e "\n=====> Post install reminder:"
-  echo "=====> -- GIT GPG KEY --"
-  echo "=====> -- GITHUB SSH  --"
+  echo "Set default shell to zsh"
+  chsh -s $(which zsh)
 
   echo -e "\n[*] Remember to restart your computer once done."
 }

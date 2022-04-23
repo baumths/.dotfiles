@@ -4,7 +4,7 @@ WALLPAPERS_DIR="$HOME/.local/wallpapers"
 DEFAULT_WALLPAPER="014.jpg"
 
 check_has_ssh() {
-  read -t 30 -p "Did you remember to add the Github SSH keys? (y/N): " answer
+  read -t 30 -p "Did you remember to add the Github SSH keys? [y/N] " answer
 
   if [[ "$answer" != "y" ]]; then
     echo -e "\n=====> Unable to setup wallpapers..."

@@ -1,13 +1,5 @@
 #!/bin/bash
 
-# TODO: [ ] Install `lua` and its language server
-
-# Helpers
-
-exists() {
-  command -v "$1" >/dev/null 2>&1
-}
-
 # CLI tools & packages
 
 install_apt_pkgs() {
@@ -54,52 +46,44 @@ install_docker() {
   sudo apt remove -yy python3-pip
 }
 
-## Revise this later, changed from snap to manual installation
 install_flutter() {
   git clone -b stable --depth 1 https://github.com/flutter/flutter.git "$HOME/.local/share/flutter"
-
-  if ! exists flutter; then
-    echo -e "\n=====> Flutter not found. Did you add it to PATH?"
-    export PATH="$PATH:$HOME/.local/share/flutter/bin"
-  fi;
-
-  flutter doctor
 }
 
 install_chrome() {
-  wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - 
-  sh -c 'echo "deb https://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
+  wget -O - https://dl-ssl.google.com/linux/linux_signing_key.pub \
+  | gpg --dearmor \
+  | sudo tee /usr/share/keyrings/google-chrome.gpg
+
+  echo "deb [arch=amd64 signed-by=/usr/share/keyrings/google-chrome.gpg] http://dl.google.com/linux/chrome/deb/ stable main" \
+  | sudo tee /etc/apt/sources.list.d/google-chrome.list
+
   sudo apt update
   sudo apt install -yy google-chrome-stable
 }
 
 install_spotify() {
-  curl -sS https://download.spotify.com/debian/pubkey_5E3C45D7B312C643.gpg | sudo apt-key add - 
-  echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
+  wget -O - https://download.spotify.com/debian/pubkey_5E3C45D7B312C643.gpg \
+  | gpg --dearmor \
+  | sudo tee /usr/share/keyrings/spotify.gpg
+
+  echo "deb [arch=amd64 signed-by=/usr/share/keyrings/spotify.gpg] http://repository.spotify.com stable non-free" \
+  | sudo tee /etc/apt/sources.list.d/spotify.list
+
   sudo apt update
   sudo apt install -yy spotify-client
 }
 
-# Looks
-
 setup_shell() {
-  # Shell Theme
-  gsettings set org.gnome.shell.extensions.user-theme name ""
-  gsettings set org.gnome.desktop.interface gtk-theme "Adwaita-dark"
-  gsettings set org.gnome.desktop.wm.preferences theme "Adwaita"
-  gsettings set org.gnome.desktop.interface icon-theme "Adwaita"
-  gsettings set org.gnome.desktop.interface cursor-theme "Adwaita"
-
   gsettings set org.gnome.desktop.interface show-battery-percentage "true"
+
+  # ALT + RETURN = TERMINAL
+  gsettings set org.gnome.settings-daemon.plugins.media-keys terminal "['<Alt>Return']"
 
   # Input Sources
   gsettings set org.gnome.desktop.input-sources mru-sources "[('xkb', 'us'), ('xkb', 'br')]"
   gsettings set org.gnome.desktop.input-sources sources "[('xkb', 'br'), ('xkb', 'us')]"
   gsettings set org.gnome.desktop.input-sources xkb-options "['caps:swapescape', 'compose:ralt']"
-
-  # Keyboard
-  gsettings set org.gnome.desktop.peripherals.keyboard delay "uint32 254"
-  gsettings set org.gnome.desktop.peripherals.keyboard repeat-interval "uint32 23"
 
   # Keybingings
   gsettings set org.gnome.desktop.wm.keybindings close "['<Alt>q']"
@@ -109,9 +93,6 @@ setup_shell() {
   gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-2 "['<Alt>2']"
   gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-3 "['<Alt>3']"
   gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-4 "['<Alt>4']"
-
-  # ALT + RETURN = TERMINAL
-  gsettings set org.gnome.settings-daemon.plugins.media-keys terminal "['<Alt>Return']"
 
   # Wallpapers
   local WALLPAPERS_SCRIPT="$HOME/.dotfiles/scripts/wallpapers.sh"
@@ -155,11 +136,11 @@ main () {
   echo -e "\n=====> Installing Docker..."
   install_docker
 
-  echo -e "\n=====> Installing Flutter..."
-  install_flutter
-
   echo -e "\n=====> Installing Chrome..."
   install_chrome
+
+  echo -e "\n=====> Installing Flutter..."
+  install_flutter
 
   echo -e "\n=====> Installing Spotify..."
   install_spotify
@@ -171,8 +152,8 @@ main () {
   chsh -s $(which zsh) # set zsh as default shell
 
   echo -e "\n=====> Post install reminder:"
-  echo -e "\n=====> -- GIT GPG KEY --"
-  echo -e "\n=====> -- GITHUB SSH  --"
+  echo "=====> -- GIT GPG KEY --"
+  echo "=====> -- GITHUB SSH  --"
 
   echo -e "\n[*] Remember to restart your computer once done."
 }

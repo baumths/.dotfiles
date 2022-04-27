@@ -28,7 +28,7 @@ local options = {
   undofile = true,
   undodir = "/home/baum/.vim/undodir",
   termguicolors = true,
-  laststatus = 2,
+  laststatus = 3,
   wildmenu = true,
 
   clipboard = "unnamed",

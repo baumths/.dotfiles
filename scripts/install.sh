@@ -8,10 +8,10 @@ add_gpg_key() {
   local file_path="/usr/share/keyrings/$file_name"
 
   if [[ -f "$file_path" ]]; then
-    echo "GPG key [$file_name] already exists, skipping..."
+    echo "[*] GPG key [$file_name] already exists, skipping..."
   else
     wget -O- $link | sudo gpg --dearmor -o $file_path
-    echo "GPG key [$file_name] added."
+    echo "[*] GPG key [$file_name] added."
   fi
 }
 
@@ -21,10 +21,10 @@ add_apt_source() {
   local file_path="/etc/apt/sources.list.d/$file_name"
 
   if [[ -f "$file_path" ]]; then
-    echo "Apt source [$file_name] already exists, skipping..."
+    echo "[*] Apt source [$file_name] already exists, skipping..."
   else
     echo $content | sudo tee $file_path > /dev/null
-    echo "Apt source [$file_name] added."
+    echo "[*] Apt source [$file_name] added."
   fi
 }
 
@@ -139,7 +139,7 @@ setup_shell() {
   # Wallpapers
   local WALLPAPERS_SCRIPT="$HOME/.dotfiles/scripts/wallpapers.sh"
   if [[ -f $WALLPAPERS_SCRIPT ]]; then
-    echo -e "\n=====> Installing Wallpapers..."
+    echo -e "\n[*] Installing Wallpapers..."
     chmod +x $WALLPAPERS_SCRIPT
     bash $WALLPAPERS_SCRIPT
   else
@@ -161,35 +161,34 @@ setup_symlinks() {
 
 # Entrypoint
 main () {
-  echo -e "\n=====> Installing apt packages..."
+  echo -e "\n[*] Installing apt packages..."
   install_apt_pkgs
   
-  echo -e "\n=====> Creating symlinks..."
+  echo -e "\n[*] Creating symlinks..."
   setup_symlinks
   
-  echo -e "\n=====> Installing Neovim..."
+  echo -e "\n[*] Installing Neovim..."
   install_neovim
 
-  echo -e "\n=====> Installing Lazygit..."
+  echo -e "\n[*] Installing Lazygit..."
   install_lazygit
 
-  echo -e "\n=====> Installing Docker..."
+  echo -e "\n[*] Installing Docker..."
   install_docker
 
-  echo -e "\n=====> Installing Chrome..."
+  echo -e "\n[*] Installing Chrome..."
   install_chrome
 
-  echo -e "\n=====> Installing Flutter..."
+  echo -e "\n[*] Installing Flutter..."
   install_flutter
 
-  echo -e "\n=====> Updating Gnome Themes..."
+  echo -e "\n[*] Updating Gnome Themes..."
   setup_shell
 
-  echo -e "\n=====> Setting things up..."
-  echo "Set default shell to zsh"
+  echo "[*] Set default shell to zsh"
   chsh -s $(which zsh)
 
-  echo -e "\n[*] Remember to restart your computer once done."
+  echo -e "\n[#] Remember to restart your computer once done."
 }
 
 main "$@"

@@ -29,12 +29,15 @@ alias pserve="python3 -m http.server 8000"
 # Format json
 alias pjson="python3 -m json.tool"
 
+# shorter access to docker compose
+alias dc="docker compose"
+
 # Access To Memory -------------------------------------------------------------
 
 export ATOM_DIR="$HOME/dev/github/atom"
 export ATOM_COMPOSE_FILE="$ATOM_DIR/docker/docker-compose.dev.yml"
 
-alias atom="docker-compose -f $ATOM_COMPOSE_FILE"
+alias atom="docker compose -f $ATOM_COMPOSE_FILE"
 alias atom-ex="atom exec atom"
 alias atom-cc="atom-ex php symfony cc"
 alias atom-sp="atom-ex php symfony search:populate"

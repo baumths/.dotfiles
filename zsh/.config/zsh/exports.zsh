@@ -11,3 +11,4 @@ export MANPAGER="nvim +Man!"
 export PATH="$PATH:$HOME/.pub-cache/bin" # Dart active global packages
 export PATH="$PATH:$HOME/.local/share/flutter/bin"
 export PATH="$PATH:$HOME/.local/share/lua/bin"
+export PATH="$PATH:$HOME/go/bin"

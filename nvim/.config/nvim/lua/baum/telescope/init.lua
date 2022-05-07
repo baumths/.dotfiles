@@ -1,14 +1,10 @@
 local telescope = require("telescope")
 local actions = require("telescope.actions")
 
-telescope.load_extension("flutter")
-telescope.load_extension("media_files")
-
-
 telescope.setup {
   defaults = {
     prompt_prefix = " ",
-    selection_caret = " ",
+    selection_caret = " ",
     path_display = { "smart" },
 
     mappings = {
@@ -80,14 +76,6 @@ telescope.setup {
     find_files = {
       previewer = false,
     },
-    lsp_code_actions = {
-      initial_mode = "normal",
-      theme = "dropdown",
-      previewer = false,
-      layout_config = {
-        height = 0.7,
-      }
-    },
     buffers = {
       initial_mode = "normal",
       show_all_buffers = true,
@@ -107,6 +95,18 @@ telescope.setup {
       -- defaults to {"png", "jpg", "mp4", "webm", "pdf"}
       filetypes = {"png", "webp", "jpg", "jpeg"},
       find_cmd = "rg" -- find command (defaults to `fd`)
-    }
+    },
+    ["ui-select"] = {
+      require("telescope.themes").get_dropdown {
+        initial_mode = "normal",
+        layout_config = {
+          height = 0.7
+        }
+      },
+    },
   },
 }
+
+telescope.load_extension("flutter")
+telescope.load_extension("media_files")
+telescope.load_extension("ui-select")

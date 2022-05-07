@@ -74,11 +74,10 @@ local function setup_plugins(use)
   use "williamboman/nvim-lsp-installer" -- simple to use language server installer
 
   -- Telescope
-  use {
-    "nvim-telescope/telescope.nvim",
-    commit = "5045d7e5e74208dbbf98271861b05ff42dc66360",
-  } -- Fuzzy finder
-  use "nvim-telescope/telescope-media-files.nvim" -- Shows assets in telescope
+  use "nvim-telescope/telescope.nvim"
+   -- Fuzzy finder
+  use "nvim-telescope/telescope-media-files.nvim" -- shows assets in telescope
+  use 'nvim-telescope/telescope-ui-select.nvim' -- show lsp stuff in telescope
 
   -- Treesitter
   use {

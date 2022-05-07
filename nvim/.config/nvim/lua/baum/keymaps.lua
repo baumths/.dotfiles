@@ -53,10 +53,12 @@ nmap("<C-Down>", ":resize -5<CR>")
 nmap("<C-Left>", ":vertical resize +5<CR>")
 nmap("<C-Right>", ":vertical resize -5<CR>")
 
+-- LSP
+nmap("<leader>.", ":lua vim.lsp.buf.code_action()<CR>")
+
 -- Telescope
 nmap("<leader>e", "<cmd>Telescope find_files<CR>")
 nmap("<leader>b", "<cmd>Telescope buffers<CR>")
-nmap("<leader>.", "<cmd>Telescope lsp_code_actions<CR>")
 nmap(
   "<leader><CR>",
   "<cmd>lua require'baum.telescope.finders'.find_files()<CR>"

@@ -30,6 +30,7 @@ set_wallpaper() {
     echo "[*] Updating Wallpaper & ScreenSaver..."
 
     gsettings set org.gnome.desktop.background picture-uri "file:///$WALLPAPERS_DIR/$FILE_NAME"
+    gsettings set org.gnome.desktop.background picture-uri-dark "file:///$WALLPAPERS_DIR/$FILE_NAME"
     gsettings set org.gnome.desktop.screensaver picture-uri "file:///$WALLPAPERS_DIR/$FILE_NAME"
   else
     echo "[!] File $WALLPAPERS_DIR/$FILE_NAME not found. Options:"

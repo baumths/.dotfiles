@@ -74,8 +74,7 @@ local function setup_plugins(use)
   use "williamboman/nvim-lsp-installer" -- simple to use language server installer
 
   -- Telescope
-  use "nvim-telescope/telescope.nvim"
-   -- Fuzzy finder
+  use "nvim-telescope/telescope.nvim" -- Fuzzy finder
   use "nvim-telescope/telescope-media-files.nvim" -- shows assets in telescope
   use 'nvim-telescope/telescope-ui-select.nvim' -- show lsp stuff in telescope
 

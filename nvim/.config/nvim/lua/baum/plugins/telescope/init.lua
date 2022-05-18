@@ -1,7 +1,7 @@
-local telescope = require("telescope")
+local K = require("baum.keymap")
 local actions = require("telescope.actions")
 
-telescope.setup {
+require("telescope").setup {
   defaults = {
     prompt_prefix = " ",
     selection_caret = " ",
@@ -90,12 +90,6 @@ telescope.setup {
     }
   },
   extensions = {
-    media_files = {
-      -- filetypes whitelist
-      -- defaults to {"png", "jpg", "mp4", "webm", "pdf"}
-      filetypes = {"png", "webp", "jpg", "jpeg"},
-      find_cmd = "rg" -- find command (defaults to `fd`)
-    },
     ["ui-select"] = {
       require("telescope.themes").get_dropdown {
         initial_mode = "normal",
@@ -107,6 +101,13 @@ telescope.setup {
   },
 }
 
-telescope.load_extension("flutter")
-telescope.load_extension("media_files")
-telescope.load_extension("ui-select")
+K.n("<leader>e", "<cmd>Telescope find_files<CR>")
+K.n("<leader>b", "<cmd>Telescope buffers<CR>")
+K.n(
+  "<leader><CR>",
+  "<cmd>lua require'baum.plugins.telescope.finders'.find_files()<CR>"
+)
+K.n(
+  "<leader><leader><CR>",
+  "<cmd>lua require'baum.plugins.telescope.finders'.find_all_files()<CR>"
+)

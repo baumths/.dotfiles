@@ -1,12 +1,4 @@
-local colorscheme = "nvcode"
-
--- Transparent background
--- vim.cmd [[
---   highlight Normal guibg=NONE ctermbg=NONE
---   highlight EndOfBuffer guibg=NONE ctermbg=NONE
---   highlight SignColumn guibg=NONE
--- ]]
-
+local colorscheme = "desert"
 
 local has_catppuccin, catppuccin = pcall(require, "catppuccin")
 if has_catppuccin then

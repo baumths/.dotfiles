@@ -6,15 +6,12 @@ configs.setup {
     "bash",
     "json",
     "yaml",
-    "html",
-    "scss",
     "lua",
     "markdown",
   },
   sync_install = false,
-  -- ignore_install = { "" },
   highlight = {
-    enable = true, -- false will disable the whole extension
+    enable = true,
     disable = {},
     additional_vim_regex_highlighting = true,
   },

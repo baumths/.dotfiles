@@ -26,7 +26,7 @@ vim.g.nvim_tree_icons = {
 local nvim_tree = require("nvim-tree")
 
 local function expand_all()
-    local nvimlib = require('nvim-tree.lib')
+    local nvimlib = require("nvim-tree.lib")
     local function iter(nodes)
         for _, node in pairs(nodes) do
             if not node.open and node.nodes then

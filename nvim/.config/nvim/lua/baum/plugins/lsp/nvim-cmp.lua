@@ -28,13 +28,13 @@ local icons = {
   TypeParameter = "",
 }
 
-local aliases = {
-  nvim_lsp = "LSP",
-  luasnip = "Snippet",
-  nvim_lua = "LUA",
-  buffer = "Buffer",
-  path = "Path",
-}
+-- local aliases = {
+--   nvim_lsp = "LSP",
+--   luasnip = "Snippet",
+--   nvim_lua = "LUA",
+--   buffer = "Buffer",
+--   path = "Path",
+-- }
 
 cmp.setup {
   snippet = {
@@ -71,9 +71,9 @@ cmp.setup {
   }),
   formatting = {
     fields = { "kind", "abbr", "menu" },
-    format = function(entry, item)
+    format = function(_, item)
       item.kind = string.format("%s", icons[item.kind])
-      item.menu = string.format("[%s]", aliases[entry.source.name] or entry.source.name)
+      -- item.menu = string.format("[%s]", aliases[entry.source.name] or entry.source.name)
       return item
     end,
   },
@@ -87,6 +87,10 @@ cmp.setup {
   confirm_opts = {
     behavior = cmp.ConfirmBehavior.Replace,
     select = false,
+  },
+  window = {
+    completion = cmp.config.window.bordered(),
+    documentation = cmp.config.window.bordered(),
   },
   experimental = {
     ghost_text = true,

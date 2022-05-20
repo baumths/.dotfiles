@@ -78,11 +78,11 @@ cmp.setup {
     end,
   },
   sources = {
-    { name = "nvim_lsp", max_item_count = 10 },
-    { name = "luasnip", max_item_count = 10 },
-    { name = "nvim_lua", max_item_count = 10 },
-    { name = "buffer", max_item_count = 10 },
-    { name = "path", max_item_count = 10 },
+    { name = "nvim_lsp" },
+    { name = "luasnip" },
+    { name = "nvim_lua" },
+    { name = "buffer" },
+    { name = "path" },
   },
   confirm_opts = {
     behavior = cmp.ConfirmBehavior.Replace,

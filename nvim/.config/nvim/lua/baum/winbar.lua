@@ -1,9 +1,18 @@
 local M = {}
 
-M.get_winbar = function()
+local ignored_filetypes = {
+  "log",
+  "NvimTree",
+}
+
+local function check_is_ignored(filetype)
+  return vim.tbl_contains(ignored_filetypes, filetype)
+end
+
+function M.get_winbar()
   local bo = vim.bo
 
-  if bo.filetype == "NvimTree" then
+  if check_is_ignored(bo.filetype) then
     return ""
   end
 

@@ -37,9 +37,8 @@ setup_gnome_settings() {
   gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-3 "['<Alt>3']"
   gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-4 "['<Alt>4']"
 
-  gsettings set org.gnome.desktop.peripherals.keyboard repeat-interval 60
+  gsettings set org.gnome.desktop.peripherals.keyboard repeat-interval 15
   gsettings set org.gnome.desktop.peripherals.keyboard delay 240
-  xset r rate 240 60
 
   # Wallpapers
   local WALLPAPERS_SCRIPT="$HOME/.dotfiles/scripts/wallpapers.sh"

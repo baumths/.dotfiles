@@ -8,6 +8,6 @@
   s = status -s
 [user]
 	name = mbaumgartenbr
-	signingkey = 0757EEB1E9FE1FB6
+	signingkey = 382C8E7D394FF91B
 [commit]
 	gpgsign = true

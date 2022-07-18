@@ -9,3 +9,17 @@ vim.api.nvim_create_autocmd(
     end,
   }
 )
+
+vim.api.nvim_create_autocmd(
+  "User",
+  {
+    group = baum_group,
+    pattern = "PackerCompileDone",
+    callback = function()
+      vim.cmd "CatppuccinCompile"
+      vim.defer_fn(function()
+        vim.cmd "colorscheme catppuccin"
+      end, 50)
+    end,
+  }
+)

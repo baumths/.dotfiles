@@ -60,16 +60,22 @@ nvim_tree.setup {
       enable = true,
     },
     icons = {
+      show = {
+        file = true,
+        folder = true,
+        folder_arrow = false,
+        git = true,
+      },
       glyphs = {
         default = "",
         symlink = "",
         git = {
           unstaged = "",
-          staged = "S",
+          staged = "✓",
           unmerged = "",
           renamed = "➜",
           deleted = "",
-          untracked = "U",
+          untracked = "★",
           ignored = "◌",
         },
         folder = {

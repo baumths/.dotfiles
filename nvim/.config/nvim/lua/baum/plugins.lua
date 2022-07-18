@@ -59,6 +59,7 @@ local function setup_plugins(use)
   use {
     "catppuccin/nvim",
     as = "catppuccin",
+    run = "CatppuccinCompile",
     config = function()
       require("baum.plugins.colorscheme")
     end,
@@ -210,7 +211,13 @@ local function setup_plugins(use)
   end
 end
 
-return require("packer").startup {
+local packer = require("packer")
+
+packer.init {
+  auto_reload_compiled = true,
+}
+
+return packer.startup {
   setup_plugins,
   config = {
     display = {

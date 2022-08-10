@@ -13,7 +13,11 @@ function M.setup ()
   end
 
   local config = {
-    virtual_text = true,
+    virtual_text = {
+      severity = {
+        min = vim.diagnostic.severity.WARN,
+      },
+    },
     signs = {
       active = signs,
     },

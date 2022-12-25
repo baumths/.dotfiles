@@ -32,4 +32,3 @@ o.termguicolors = true
 o.laststatus = 3
 o.wildmenu = true
 o.clipboard = "unnamed"
-o.winbar = "%{%v:lua.require'baum.winbar'.get_winbar()%}"

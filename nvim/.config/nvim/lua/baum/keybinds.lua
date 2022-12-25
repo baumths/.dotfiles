@@ -53,3 +53,5 @@ K.x("J", ":move '>+1<CR>gv-gv")
 K.x("K", ":move '<-2<CR>gv-gv")
 K.x("<A-j>", ":move '>+1<CR>gv-gv")
 K.x("<A-k>", ":move '<-2<CR>gv-gv")
+
+K.i("<C-g>", "<C-k>")

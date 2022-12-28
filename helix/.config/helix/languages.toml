@@ -1,0 +1,1 @@
+use-grammars = { only = [ 'json', 'yaml', 'toml', 'markdown', 'bash', 'dart', 'rust', 'go', 'python' ] }

@@ -36,6 +36,8 @@ install_packages() {
     tree \
     gnupg \
     kitty \
+    rustc \
+    golang \
     lua5.4 \
     software-properties-common \
     apt-transport-https \
@@ -46,8 +48,7 @@ install_packages() {
     cmake \
     ninja-build \
     pkg-config \
-    libgtk-3-dev \
-    golang
+    libgtk-3-dev
 }
 
 install_neovim() {
@@ -58,6 +59,11 @@ install_neovim() {
 
 install_lazygit() {
   go install github.com/jesseduffield/lazygit@latest
+}
+
+install_helix() {
+  # TODO: clone, build, setup
+  # TODO: add install instruction to main at the end of file
 }
 
 install_docker() {
@@ -86,6 +92,9 @@ install_docker() {
 }
 
 install_flutter() {
+  # TODO: use either
+  #         - snap
+  #         - git init && git remote add -f -t master -t beta -t stable origin https://github.com/flutter/flutter.git
   git clone -b stable --depth 1 https://github.com/flutter/flutter.git "$HOME/.local/share/flutter"
 }
 

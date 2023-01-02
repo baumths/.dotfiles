@@ -75,6 +75,26 @@ install_nerd_font() {
   popd &> /dev/null
 }
 
+install_flutter() {
+  local FLUTTER_PATH="$HOME/.local/share/flutter"
+
+  if [[ -d "$FLUTTER_PATH" ]]; then
+    echo "[!] Flutter already installed, skipping..."
+    return 0
+  fi
+
+  mkdir -p "$FLUTTER_PATH"
+  pushd "$FLUTTER_PATH" &> /dev/null
+
+  git init
+  git remote add -f -t master -t beta -t stable origin "https://github.com/flutter/flutter.git"
+  git checkout -t origin/stable
+
+  popd &> /dev/null
+
+  flutter doctor
+}
+
 run_install_script() {
   local FILE_NAME="$1"
   local FILE_PATH="$HOME/.dotfiles/scripts/distros/$FILE_NAME"
@@ -98,6 +118,9 @@ post_install() {
 
   echo -e "\n[*] Installing Nerd Font"
   install_nerd_font
+
+  echo -e "\n[*] Installing Flutter"
+  install_flutter
 
   echo "[*] Setting 'zsh' as the default shell..."
   chsh -s $(which zsh)

@@ -9,6 +9,7 @@ setup_symlinks() {
     stow -v git/
     stow -v zsh/
     stow -v nvim/
+    stow -v helix/
     stow -v kitty/
     stow -v lazygit/
 
@@ -46,6 +47,7 @@ setup_gnome_settings() {
     echo -e "\n[*] Installing Wallpapers..."
     chmod +x $WALLPAPERS_SCRIPT
     bash $WALLPAPERS_SCRIPT
+    chmod -x $WALLPAPERS_SCRIPT
   else
     echo -e "\n[!] Failed to setup wallpapers."
   fi
@@ -58,6 +60,7 @@ run_install_script() {
   if [ -f "$FILE_PATH" ]; then
     chmod +x $FILE_PATH
     bash $FILE_PATH
+    chmod -x $FILE_PATH
   else
     echo -e "\n[!] Could not find script at $FILE_PATH\n"
     exit 1
@@ -88,7 +91,7 @@ main() {
 
   post_install
 
-  echo -e "\n[#] Remember to restart your computer once done."
+  echo -e "\n[#] Remember to restart your pc."
 }
 
 main "$@"

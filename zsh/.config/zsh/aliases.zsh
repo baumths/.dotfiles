@@ -2,7 +2,7 @@ alias v="nvim"
 alias nvimrc="nvim ~/.config/nvim/"
 
 alias g="lazygit"
-alias e="exit"
+alias q="exit"
 
 alias ds="df -H /dev/sda*"
 

@@ -1,5 +1,5 @@
-export ZDOTDIR=$HOME/.config/zsh
 export SHELL=/bin/zsh
+export ZDOTDIR=$HOME/.config/zsh
 export XDG_CONFIG_HOME=$HOME/.config/
 export XDG_CONFIG_DATA=$HOME/.local/share
 

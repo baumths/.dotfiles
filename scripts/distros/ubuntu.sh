@@ -34,9 +34,11 @@ install_packages() {
     wget \
     curl \
     tree \
+    xclip \
     gnupg \
     kitty \
     rustc \
+    cargo \
     golang \
     lua5.4 \
     software-properties-common \
@@ -59,11 +61,6 @@ install_neovim() {
 
 install_lazygit() {
   go install github.com/jesseduffield/lazygit@latest
-}
-
-install_helix() {
-  # TODO: clone, build, setup
-  # TODO: add install instruction to main at the end of file
 }
 
 install_docker() {
@@ -89,13 +86,6 @@ install_docker() {
 
   sudo groupadd docker
   sudo usermod -aG docker "$USER"
-}
-
-install_flutter() {
-  # TODO: use either
-  #         - snap
-  #         - git init && git remote add -f -t master -t beta -t stable origin https://github.com/flutter/flutter.git
-  git clone -b stable --depth 1 https://github.com/flutter/flutter.git "$HOME/.local/share/flutter"
 }
 
 install_chrome() {
@@ -131,9 +121,6 @@ main () {
 
   echo -e "\n[*] Installing Chrome..."
   install_chrome
-
-  echo -e "\n[*] Installing Flutter..."
-  install_flutter
 }
 
 main "$@"

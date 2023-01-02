@@ -53,6 +53,28 @@ setup_gnome_settings() {
   fi
 }
 
+install_nerd_font() {
+  local FONT_NAME="JetBrainsMono"
+  local FONT_PATH="$HOME/.local/share/fonts/${FONT_NAME}NerdFont"
+
+  if [[ -d "$FONT_PATH" ]]; then
+    echo "[!] Nerd Font already exists, skipping..."
+    return 0
+  fi
+
+  mkdir -p "$FONT_PATH"
+  pushd "$FONT_PATH" &> /dev/null
+
+  local ZIP_FILE="${FONT_NAME}.zip"
+  wget "https://github.com/ryanoasis/nerd-fonts/releases/latest/download/${ZIP_FILE}"
+
+  unzip $ZIP_FILE
+  rm -f $ZIP_FILE
+
+  echo "[*] ${FONT_NAME} Nerd Font installed successfully."
+  popd &> /dev/null
+}
+
 run_install_script() {
   local FILE_NAME="$1"
   local FILE_PATH="$HOME/.dotfiles/scripts/distros/$FILE_NAME"
@@ -73,6 +95,9 @@ post_install() {
 
   echo -e "\n[*] Updating Gnome shell settings..."
   setup_gnome_settings
+
+  echo -e "\n[*] Installing Nerd Font"
+  install_nerd_font
 
   echo "[*] Setting 'zsh' as the default shell..."
   chsh -s $(which zsh)

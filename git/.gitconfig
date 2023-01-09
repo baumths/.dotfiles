@@ -7,7 +7,8 @@
 	pf = push --force-with-lease
   s = status -s
 [user]
-	name = mbaumgartenbr
+	name = baumths
+	email = baumths@gmail.com
 	signingkey = 382C8E7D394FF91B
 [commit]
 	gpgsign = true

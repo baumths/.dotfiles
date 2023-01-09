@@ -5,6 +5,7 @@ line-number = "relative"
 bufferline = "multiple"
 color-modes = true
 true-color = true
+idle-timeout = 0
 rulers = [80]
 mouse = false
 

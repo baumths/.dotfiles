@@ -27,13 +27,6 @@ end
 nvim_tree.setup {
   disable_netrw = true,
   hijack_netrw = true,
-  open_on_setup = false,
-  ignore_ft_on_setup = {
-    "startify",
-    "dashboard",
-    "alpha",
-  },
-  open_on_tab = false,
   hijack_cursor = false,
   update_cwd = false,
   diagnostics = {
@@ -95,7 +88,8 @@ nvim_tree.setup {
     mappings = {
       custom_only = false,
       list = {
-        { key = "O", action = "expand_all", action_cb = expand_all }
+        { key = "O", action = "expand_all", action_cb = expand_all },
+        { key = "d", action = "trash" }
       },
     },
     number = false,
@@ -105,10 +99,6 @@ nvim_tree.setup {
     change_dir = {
       enable = false,
       global = false,
-    },
-    open_file = {
-      quit_on_open = false,
-      resize_window = false,
     },
   },
 }

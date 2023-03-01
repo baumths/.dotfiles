@@ -196,6 +196,38 @@ local function setup_plugins(use)
     end,
   }
 
+  -- Testing
+  use {
+    "nvim-neotest/neotest",
+    requires = {
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+      "sidlatau/neotest-dart",
+    },
+    config = function()
+      require("baum.plugins.test")
+      require("neotest").setup {
+        adapters = {
+          require("neotest-dart") {
+            command = "flutter",
+          },
+        },
+        icons = {
+          passed = "",
+          failed = "",
+          skipped = "",
+          unknown = "",
+          running = "◌",
+          running_animated = { "", "", "", "" },
+        },
+        summary = {
+          animated = true,
+          open = "botright vsplit | vertical resize 80",
+        },
+      }
+    end,
+  }
+
   -- Other
   use {
     "fladson/vim-kitty",

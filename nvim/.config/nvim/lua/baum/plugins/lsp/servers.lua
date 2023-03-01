@@ -9,7 +9,7 @@ local flags = {
   debounce_text_changes = 200,
 }
 
-lsp.sumneko_lua.setup({
+lsp.lua_ls.setup({
   flags = flags,
   capabilities = capabilities,
   on_attach = function(_, buf)

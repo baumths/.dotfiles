@@ -21,10 +21,10 @@ K.n("<leader>p", '"+p')
 K.n("<leader>P", '"+P')
 
 -- Better window navigation
-K.n("<leader>h", ":wincmd h<CR>")
-K.n("<leader>j", ":wincmd j<CR>")
-K.n("<leader>k", ":wincmd k<CR>")
-K.n("<leader>l", ":wincmd l<CR>")
+K.n("<leader>[", ":wincmd h<CR>")
+K.n("<leader>}", ":wincmd j<CR>")
+K.n("<leader>{", ":wincmd k<CR>")
+K.n("<leader>]", ":wincmd l<CR>")
 
 -- Arrow resizing
 K.n("<C-Up>", ":resize +5<CR>")
@@ -55,3 +55,4 @@ K.x("<A-j>", ":move '>+1<CR>gv-gv")
 K.x("<A-k>", ":move '<-2<CR>gv-gv")
 
 K.i("<C-g>", "<C-k>")
+K.n("U", "<C-r>")

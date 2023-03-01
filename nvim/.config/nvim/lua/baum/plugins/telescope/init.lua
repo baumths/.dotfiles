@@ -103,7 +103,7 @@ require("telescope").setup {
 
 K.n("<leader>b", "<cmd>Telescope buffers<CR>")
 K.n(
-  "<leader>e",
+  "<leader><cr>",
   "<cmd>lua require'baum.plugins.telescope.finders'.find_files()<CR>"
 )
 K.n(

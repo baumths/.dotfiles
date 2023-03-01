@@ -101,13 +101,16 @@ require("telescope").setup {
   },
 }
 
-K.n("<leader>e", "<cmd>Telescope find_files<CR>")
 K.n("<leader>b", "<cmd>Telescope buffers<CR>")
 K.n(
-  "<leader><CR>",
+  "<leader>e",
   "<cmd>lua require'baum.plugins.telescope.finders'.find_files()<CR>"
 )
 K.n(
   "<leader><leader><CR>",
   "<cmd>lua require'baum.plugins.telescope.finders'.find_all_files()<CR>"
+)
+K.n(
+  "<leader>d",
+  "<cmd>lua require'telescope.builtin'.diagnostics { bufnr = 0, initial_mode = 'normal' }<CR>>"
 )

@@ -103,4 +103,4 @@ nvim_tree.setup {
   },
 }
 
-K.n("<leader>t", ":NvimTreeToggle<CR>")
+K.n("<leader>e", "<cmd>NvimTreeToggle<cr>")

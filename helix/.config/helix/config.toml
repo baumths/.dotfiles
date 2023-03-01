@@ -31,3 +31,5 @@ c = "toggle_comments"
 [keys.normal.space]
 w = ":write"
 q = ":quit"
+"[" = "jump_view_left"
+"]" = "jump_view_right"

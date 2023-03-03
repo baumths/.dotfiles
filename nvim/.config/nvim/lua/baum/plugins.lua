@@ -220,6 +220,10 @@ local function setup_plugins(use)
           running = "◌",
           running_animated = { "", "", "", "" },
         },
+        quickfix = {
+          enabled = true,
+          open = false,
+        },
         summary = {
           animated = true,
           open = "botright vsplit | vertical resize 80",

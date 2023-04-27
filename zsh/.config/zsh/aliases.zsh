@@ -1,42 +1,26 @@
-alias v="nvim"
-alias nvimrc="nvim ~/.config/nvim/"
-
-alias g="lazygit"
-alias q="exit"
-
-alias ds="df -H /dev/sda*"
-
 alias zsh-update-plugins="find "$ZDOTDIR/plugins" -type d -exec test -e '{}/.git' ';' -print0 | xargs -I {} -0 git -C {} pull -q"
 
-# Colorize grep output (good for log files)
-alias grep="grep --color=auto"
-alias egrep="egrep --color=auto"
-alias fgrep="fgrep --color=auto"
-
-# Colorize ls output
-alias ls="ls --color=auto"
-alias l="ls -la"
+alias q="exit"
+alias lg="lazygit"
+alias grep="rg"
+alias ls="exa"
+alias l="exa -la"
+alias tree="exa -T"
+alias dc="docker compose"
+alias ds="df -H /dev/sda*"
+alias config-open="cd ~/.dotfiles && hx ."
+alias dotconfig="hx $HOME/.dotfiles"
 
 # confirm before overwriting something
 alias cp="cp -i"
 alias mv="mv -i"
 alias rm="rm -i"
 
-# Update
 alias upd="sudo apt update && sudo apt upgrade -y && sudo apt autoremove --purge -y && sudo apt clean -y"
-
-# Python serve in current folder
-alias pserve="python3 -m http.server 8000"
-
-# Format json
-alias pjson="python3 -m json.tool"
-
-# shorter access to docker compose
-alias dc="docker compose"
 
 # Access To Memory -------------------------------------------------------------
 
-export ATOM_DIR="$HOME/dev/github/atom"
+export ATOM_DIR="$HOME/projects/atom"
 export ATOM_COMPOSE_FILE="$ATOM_DIR/docker/docker-compose.dev.yml"
 
 alias atom="docker compose -f $ATOM_COMPOSE_FILE"

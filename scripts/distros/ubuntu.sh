@@ -30,10 +30,11 @@ install_packages() {
   sudo apt install -yy \
     zsh \
     fzf \
+    exa \
     stow \
     wget \
     curl \
-    tree \
+    tmux \
     xclip \
     gnupg \
     kitty \
@@ -41,6 +42,7 @@ install_packages() {
     cargo \
     golang \
     lua5.4 \
+    ripgrep \
     software-properties-common \
     apt-transport-https \
     ca-certificates \

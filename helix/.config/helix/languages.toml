@@ -1,1 +1,16 @@
-use-grammars = { only = [ 'json', 'yaml', 'toml', 'markdown', 'bash', 'dart', 'rust', 'go', 'python' ] }
+use-grammars.only = [
+  'json',
+  'yaml',
+  'toml',
+  'markdown',
+  'bash',
+  'dart',
+  'rust',
+  'go',
+  'python',
+  'git-attributes',
+  'git-commit',
+  'git-config',
+  'git-ignore',
+  'git-rebase',
+]

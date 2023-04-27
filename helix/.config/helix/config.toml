@@ -31,5 +31,10 @@ K = "hover"
 [keys.normal.space]
 q = ":quit"
 w = ":write"
+ret = "file_picker"
 "[" = "jump_view_left"
 "]" = "jump_view_right"
+
+[keys.normal.space.f]
+h = ":sh cat /tmp/tf1.pid | xargs kill -s USR1" # Flutter [h]ot reload
+H = ":sh cat /tmp/tf1.pid | xargs kill -s USR2" # Flutter [H]OT RESTART

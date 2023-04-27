@@ -4,8 +4,8 @@ SAVEHIST=$HISTSIZE
 
 export TERMINAL="kitty"
 
-export EDITOR="nvim"
-export VISUAL="nvim"
+export EDITOR="hx"
+export VISUAL="hx"
 export MANPAGER="nvim +Man!"
 
 export PATH="$PATH:$HOME/.pub-cache/bin" # Dart active global packages

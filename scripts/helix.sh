@@ -7,7 +7,7 @@ clone_and_install_helix() {
   pushd "$PATH_TO_HELIX" &> /dev/null
 
   git clone --depth 1 "https://github.com/helix-editor/helix" .
-  cargo install --path helix-term
+  cargo install --locked --path helix-term
   ln -s "$PWD/runtime" "$XDG_CONFIG_HOME/helix/runtime"
 
   popd &> /dev/null
@@ -19,7 +19,7 @@ update_helix() {
   pushd "$PATH_TO_HELIX" &> /dev/null
 
   git fetch && git pull
-  cargo install --path helix-term
+  cargo install --locked --path helix-term
 
   popd &> /dev/null
 }

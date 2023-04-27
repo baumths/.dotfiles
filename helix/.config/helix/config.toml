@@ -20,6 +20,10 @@ hidden = false
 [editor.indent-guides]
 render = true
 
+[editor.statusline]
+# left = ["mode", "spinner", "file-name"] # Default
+left = ["mode", "spinner", "spacer", "version-control", "spacer", "file-name"]
+
 [keys.normal]
 esc = ["collapse_selection", "keep_primary_selection"]
 K = "hover"

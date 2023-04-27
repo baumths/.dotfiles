@@ -4,6 +4,17 @@ function mkd() {
   mkdir $@ && cd $_
 }
 
+# FLUTTER ----------------------------------------------------------------------
+
+# Credits: https://gist.github.com/lukepighetti/393845a6751c0b00c20d5cfbac1f8bd1
+function watch_flutter_run() {
+  tmux new-session \;\
+  send-keys "flutter run --pid-file=/tmp/tf1.pid $@" Enter \;\
+  split-window -h \;\
+  send-keys 'watchexec -p -e dart -w lib -- "cat /tmp/tf1.pid | xargs kill -s USR1"' Enter \;\
+  select-pane -t 0 \;
+}
+
 # GOOGLE CLOUD -----------------------------------------------------------------
 
 function gcloud() {

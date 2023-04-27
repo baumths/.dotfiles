@@ -90,10 +90,16 @@ local function setup_plugins(use)
   }
 
   use {
-    "kyazdani42/nvim-tree.lua",
+    "nvim-neo-tree/neo-tree.nvim",
+    branch = "v2.x",
     event = "CursorHold",
+    requires = {
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons",
+      "MunifTanjim/nui.nvim",
+    },
     config = function()
-      require("baum.plugins.nvim-tree")
+      require("baum.plugins.neotree")
     end,
   }
 
@@ -168,6 +174,10 @@ local function setup_plugins(use)
       end,
     },
     { "JoosepAlviste/nvim-ts-context-commentstring", after = "nvim-treesitter" },
+    {
+      'nvim-treesitter/playground',
+      after = { 'nvim-treesitter' },
+    }
   }
 
   -- Git

@@ -30,6 +30,7 @@ local function setup_plugins(use)
 
   use "nvim-lua/popup.nvim"
   use "nvim-lua/plenary.nvim"
+  use "stevearc/dressing.nvim"
 
   use {
     "lewis6991/impatient.nvim",

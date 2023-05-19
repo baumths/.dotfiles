@@ -30,5 +30,5 @@ alias atom-sp="atom-ex php symfony search:populate"
 
 # FLUTTER ----------------------------------------------------------------------
 
-alias fbuild="flutter pub run build_runner build --delete-conflicting-outputs"
-alias fwatch="flutter pub run build_runner watch --delete-conflicting-outputs"
+alias fbuild="dart run build_runner build -d"
+alias fwatch="dart run build_runner watch -d"

@@ -32,6 +32,7 @@ K = "hover"
 q = ":quit"
 w = ":write"
 ret = "file_picker"
+F = "file_picker_in_current_buffer_directory"
 "[" = "jump_view_left"
 "]" = "jump_view_right"
 

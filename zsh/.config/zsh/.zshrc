@@ -1,7 +1,8 @@
 export SHELL=/bin/zsh
 export ZDOTDIR=$HOME/.config/zsh
-export XDG_CONFIG_HOME=$HOME/.config/
-export XDG_CONFIG_DATA=$HOME/.local/share
+export XDG_CONFIG_HOME=$HOME/.config
+export XDG_DATA_HOME=$HOME/.local/share
+export XDG_STATE_HOME=$HOME/.local/state
 
 setopt autocd extendedglob nomatch menucomplete
 setopt interactive_comments

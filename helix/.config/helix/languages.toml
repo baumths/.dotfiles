@@ -17,3 +17,7 @@ use-grammars.only = [
   'git-ignore',
   'git-rebase',
 ]
+
+[[language]]
+name = "go"
+rulers = [100]

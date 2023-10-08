@@ -1,7 +1,10 @@
 use-grammars.only = [
+  'xml',
   'json',
   'yaml',
   'toml',
+  'html',
+  'css',
   'markdown',
   'bash',
   'dart',

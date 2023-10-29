@@ -31,7 +31,7 @@ K = "hover"
 [keys.normal.space]
 q = ":quit"
 w = ":write"
-ret = "file_picker"
+ret = "file_picker_in_current_directory"
 F = "file_picker_in_current_buffer_directory"
 "[" = "jump_view_left"
 "]" = "jump_view_right"

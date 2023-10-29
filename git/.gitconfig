@@ -5,7 +5,8 @@
 	ac = commit -am
 	l = log --oneline
 	pf = push --force-with-lease
-  s = status -s
+	s = status -s
+	ms = "!git merge --squash $1 && git commit #"
 [user]
 	name = baumths
 	email = baumths@gmail.com

@@ -1,6 +1,7 @@
 alias zsh-update-plugins="find "$ZDOTDIR/plugins" -type d -exec test -e '{}/.git' ';' -print0 | xargs -I {} -0 git -C {} pull -q"
 
 alias q="exit"
+alias vi="nvim"
 alias lg="lazygit"
 alias grep="rg"
 alias ls="exa"

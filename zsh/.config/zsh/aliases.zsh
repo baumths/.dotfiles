@@ -9,8 +9,8 @@ alias l="exa -la"
 alias tree="exa -T"
 alias dc="docker compose"
 alias ds="df -H /dev/sda*"
-alias config-open="cd ~/.dotfiles && hx ."
-alias dotconfig="hx $HOME/.dotfiles"
+alias config-open="cd ~/.dotfiles && nvim"
+alias dotconfig="nvim $HOME/.dotfiles"
 
 # confirm before overwriting something
 alias cp="cp -i"

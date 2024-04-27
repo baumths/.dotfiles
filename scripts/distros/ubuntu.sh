@@ -30,17 +30,13 @@ install_packages() {
   sudo apt install -yy \
     zsh \
     fzf \
-    exa \
+    eza \
     stow \
     wget \
     curl \
-    tmux \
     xclip \
     gnupg \
     kitty \
-    rustc \
-    cargo \
-    golang \
     lua5.4 \
     ripgrep \
     software-properties-common \

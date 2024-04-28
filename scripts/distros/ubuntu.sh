@@ -38,6 +38,7 @@ install_packages() {
     gnupg \
     kitty \
     lua5.4 \
+    golang \
     ripgrep \
     software-properties-common \
     apt-transport-https \

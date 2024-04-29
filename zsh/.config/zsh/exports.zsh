@@ -1,4 +1,4 @@
-HISTFILE=$HOME/.local/.zsh_history
+HISTFILE=$HOME/.cache/.zsh_history
 HISTSIZE=1000000
 SAVEHIST=$HISTSIZE
 

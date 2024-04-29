@@ -9,18 +9,17 @@
   Ubuntu: `sudo apt install git -y`
 
 - Clone this repo
-  ```bash
-  cd ~
-  git clone --depth 1 https://github.com/mbaumgartenbr/.dotfiles.git
+  ```sh
+  cd ~ && git clone git@github.com:baumths/.dotfiles.git
   ```
+
 - Run install script
-  ```bash
-  chmod +x ~/.dotfiles/scripts/install.sh
+  ```sh
   bash ~/.dotfiles/scripts/install.sh
   ```
 
 ### Choose the default terminal
 
-```bash
+```sh
 sudo update-alternatives --config x-terminal-emulator
 ```

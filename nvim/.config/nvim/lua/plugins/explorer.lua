@@ -9,7 +9,18 @@ return {
   },
   opts = {
     close_if_last_window = true,
-    window = { mappings = { ["o"] = "open" } },
+    window = {
+      mappings = {
+        ["o"] = "open",
+        ["oc"] = "",
+        ["od"] = "",
+        ["og"] = "",
+        ["om"] = "",
+        ["on"] = "",
+        ["os"] = "",
+        ["ot"] = "",
+      },
+    },
   },
   keys = {
     { "<leader>e", "<cmd>Neotree toggle<cr>" },

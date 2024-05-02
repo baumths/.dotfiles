@@ -31,8 +31,8 @@ return {
       signs = {
         add = { text = "▎" },
         change = { text = "▎" },
-        delete = { text = "契" },
-        topdelete = { text = "契" },
+        delete = { text = "_" },
+        topdelete = { text = "‾" },
         changedelete = { text = "▎" },
       },
     },

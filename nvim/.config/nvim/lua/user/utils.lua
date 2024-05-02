@@ -60,7 +60,7 @@ local function enable_show_diagnostics_on_hover(buffer)
 end
 
 local function get_diagnostic_config()
-  local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+  local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
 
   for type, icon in pairs(signs) do
     local hl = "DiagnosticSign" .. type

@@ -10,31 +10,31 @@ return {
   },
   config = function()
     local icons = {
-      Text = "",
+      Text = "󰊄",
       Method = "m",
-      Function = "",
+      Function = "󰊕",
       Constructor = "",
       Field = "",
-      Variable = "",
+      Variable = "󰫧",
       Class = "",
       Interface = "",
       Module = "",
       Property = "",
       Unit = "",
-      Value = "",
+      Value = "󰫧",
       Enum = "",
       Keyword = "",
       Snippet = "",
-      Color = "",
-      File = "",
+      Color = "󱠓",
+      File = "󰈔",
       Reference = "",
-      Folder = "",
+      Folder = "󰉋",
       EnumMember = "",
-      Constant = "",
+      Constant = "",
       Struct = "",
       Event = "",
-      Operator = "",
-      TypeParameter = "",
+      Operator = "",
+      TypeParameter = "",
     }
 
     local luasnip = require("luasnip")
@@ -45,7 +45,7 @@ return {
       confirm_opts = { select = true, behavior = cmp.ConfirmBehavior.Replace },
       mapping = cmp.mapping.preset.insert({
         ["<c-d>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
-        ["<c-u>"] = cmp.mapping(cmp.mapping.scroll_docs( -4), { "i", "c" }),
+        ["<c-u>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
         ["<c-x>"] = cmp.mapping.complete(),
         ["<cr>"] = cmp.mapping.confirm(),
         ["<tab>"] = cmp.mapping(function(fallback)
@@ -61,8 +61,8 @@ return {
         ["<s-tab>"] = cmp.mapping(function(fallback)
           if cmp.visible() then
             cmp.select_prev_item()
-          elseif luasnip.jumpable( -1) then
-            luasnip.jump( -1)
+          elseif luasnip.jumpable(-1) then
+            luasnip.jump(-1)
           else
             fallback()
           end

@@ -23,6 +23,6 @@ return {
     },
   },
   keys = {
-    { "<leader>e", "<cmd>Neotree toggle<cr>" },
+    { "<leader>e", "<cmd>Neotree toggle position=float<cr>" },
   },
 }

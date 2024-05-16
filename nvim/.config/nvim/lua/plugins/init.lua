@@ -8,7 +8,6 @@ return {
   { "nvim-lua/popup.nvim" },
   { "nvim-lua/plenary.nvim" },
   { "stevearc/dressing.nvim", opts = {} },
-  { "numToStr/Comment.nvim",  event = "VeryLazy", opts = {} },
   { "windwp/nvim-autopairs",  event = "VeryLazy", opts = {} },
   {
     "folke/zen-mode.nvim",

@@ -20,7 +20,6 @@ vim.o.writebackup = false
 vim.o.wrap = false
 vim.o.swapfile = false
 vim.o.undofile = true
-vim.o.termguicolors = true
 vim.o.laststatus = 3
 vim.o.clipboard = "unnamed"
 

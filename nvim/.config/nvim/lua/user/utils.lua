@@ -57,20 +57,20 @@ local function enable_show_diagnostics_on_hover(buffer)
 end
 
 local function get_diagnostic_config()
-  local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
-
-  for type, icon in pairs(signs) do
-    local hl = "DiagnosticSign" .. type
-    vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-  end
-
   return {
     virtual_text = {
       severity = {
         min = vim.diagnostic.severity.WARN,
       },
     },
-    signs = { active = signs },
+    signs = {
+      text = {
+        [vim.diagnostic.severity.INFO] = "",
+        [vim.diagnostic.severity.HINT] = "",
+        [vim.diagnostic.severity.WARN] = "",
+        [vim.diagnostic.severity.ERROR] = "",
+      },
+    },
     underline = true,
     severity_sort = true,
     update_in_insert = false,

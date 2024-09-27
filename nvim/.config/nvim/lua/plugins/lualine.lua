@@ -13,7 +13,7 @@ return {
       lualine_a = { "mode" },
       lualine_b = {
         { "branch", icon = "" },
-        { "diff",   symbols = { added = " ", modified = " ", removed = " " } }
+        { "diff", symbols = { added = " ", modified = " ", removed = " " } }
       },
       lualine_c = {
         {

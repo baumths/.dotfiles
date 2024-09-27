@@ -14,6 +14,7 @@ return {
         "lua",
         "xml",
         "json",
+        "sql",
         "yaml",
         "toml",
         "markdown",

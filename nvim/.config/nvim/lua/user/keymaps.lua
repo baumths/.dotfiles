@@ -22,11 +22,14 @@ vim.keymap.set("v", "<leader>P", '"+P', opts)
 vim.keymap.set("x", "<leader>p", '"+p', opts)
 vim.keymap.set("x", "<leader>P", '"+P', opts)
 
--- window navigation
+-- navigation
 vim.keymap.set("n", "<leader>[", ":wincmd h<CR>", opts)
 vim.keymap.set("n", "<leader>}", ":wincmd j<CR>", opts)
 vim.keymap.set("n", "<leader>{", ":wincmd k<CR>", opts)
 vim.keymap.set("n", "<leader>]", ":wincmd l<CR>", opts)
+
+vim.keymap.set("n", "gn", ":bnext<CR>", opts)
+vim.keymap.set("n", "gp", ":bprevious<CR>", opts)
 
 -- split resizing
 vim.keymap.set("n", "<C-Up>", ":resize +5<CR>", opts)

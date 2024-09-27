@@ -10,6 +10,7 @@ return {
   opts = {
     close_if_last_window = true,
     window = {
+      position = "float",
       mappings = {
         ["o"] = "open",
         ["oc"] = "",
@@ -23,6 +24,6 @@ return {
     },
   },
   keys = {
-    { "<leader>e", "<cmd>Neotree toggle position=float<cr>" },
+    { "<leader>e", "<cmd>Neotree reveal<cr>" },
   },
 }

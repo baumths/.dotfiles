@@ -21,14 +21,10 @@ return {
   {
     "lewis6991/gitsigns.nvim",
     event = "VeryLazy",
-    opts = {
-      signs = {
-        add = { text = "▎" },
-        change = { text = "▎" },
-        delete = { text = "_" },
-        topdelete = { text = "‾" },
-        changedelete = { text = "▎" },
-      },
+    opts = {},
+    keys = {
+      { "]g", "<cmd>Git next_hunk<cr>" },
+      { "[g", "<cmd>Git prev_hunk<cr>" },
     },
   },
 }

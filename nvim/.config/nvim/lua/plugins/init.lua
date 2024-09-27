@@ -10,11 +10,6 @@ return {
   { "stevearc/dressing.nvim", opts = {} },
   { "windwp/nvim-autopairs",  event = "VeryLazy", opts = {} },
   {
-    "folke/zen-mode.nvim",
-    opts = {},
-    keys = { { "<leader>z", "<cmd>ZenMode<cr>" } }
-  },
-  {
     "lukas-reineke/indent-blankline.nvim",
     event = "VeryLazy",
     main = "ibl",

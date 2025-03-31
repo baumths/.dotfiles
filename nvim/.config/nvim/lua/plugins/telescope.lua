@@ -41,7 +41,6 @@ return {
     { "<leader>/",    "<cmd>Telescope live_grep<cr>" },
     { "<leader>b",    "<cmd>Telescope buffers<cr>" },
     { "<leader>d",    "<cmd>Telescope diagnostics<cr>" },
-    { "gd",           "<cmd>Telescope lsp_definitions<cr>" },
     { "gi",           "<cmd>Telescope lsp_implementations<cr>" },
     { "gr",           "<cmd>Telescope lsp_references<cr>" },
   },
